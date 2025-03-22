@@ -1,0 +1,117 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\full stack\\visual studio\\hospitalManagment\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|d:\\full stack\\visual studio\\hospitalmanagment\\hospitalmanagment\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|solutionrelative:hospitalmanagment\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|d:\\full stack\\visual studio\\hospitalmanagment\\hospitalmanagment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|solutionrelative:hospitalmanagment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|d:\\full stack\\visual studio\\hospitalmanagment\\hospitalmanagment\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|solutionrelative:hospitalmanagment\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|d:\\full stack\\visual studio\\hospitalmanagment\\hospitalmanagment\\services\\mongodbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|solutionrelative:hospitalmanagment\\services\\mongodbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|d:\\full stack\\visual studio\\hospitalmanagment\\hospitalmanagment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|solutionrelative:hospitalmanagment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|d:\\full stack\\visual studio\\hospitalmanagment\\hospitalmanagment\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3E2D419B-0BE5-4248-BC18-22853EF42F31}|hospitalManagment\\hospitalManagment.csproj|solutionrelative:hospitalmanagment\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\Program.cs",
+              "RelativeDocumentMoniker": "hospitalManagment\\Program.cs",
+              "ToolTip": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\Program.cs",
+              "RelativeToolTip": "hospitalManagment\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T05:39:49.152Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PatientController.cs",
+              "DocumentMoniker": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\Controllers\\PatientController.cs",
+              "RelativeDocumentMoniker": "hospitalManagment\\Controllers\\PatientController.cs",
+              "ToolTip": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\Controllers\\PatientController.cs",
+              "RelativeToolTip": "hospitalManagment\\Controllers\\PatientController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowJ4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-06T16:15:30.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "hospitalManagment\\appsettings.Development.json",
+              "ToolTip": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\appsettings.Development.json",
+              "RelativeToolTip": "hospitalManagment\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-06T08:35:00.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Patient.cs",
+              "DocumentMoniker": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\Models\\Patient.cs",
+              "RelativeDocumentMoniker": "hospitalManagment\\Models\\Patient.cs",
+              "ToolTip": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\Models\\Patient.cs",
+              "RelativeToolTip": "hospitalManagment\\Models\\Patient.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAswD8AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T16:28:10.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\appsettings.json",
+              "RelativeDocumentMoniker": "hospitalManagment\\appsettings.json",
+              "ToolTip": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\appsettings.json",
+              "RelativeToolTip": "hospitalManagment\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-05T16:24:38.718Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MongoDbService.cs",
+              "DocumentMoniker": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\Services\\MongoDbService.cs",
+              "RelativeDocumentMoniker": "hospitalManagment\\Services\\MongoDbService.cs",
+              "ToolTip": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\Services\\MongoDbService.cs",
+              "RelativeToolTip": "hospitalManagment\\Services\\MongoDbService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAowCUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-05T16:26:08.276Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
