@@ -20,7 +20,7 @@
       </div>
       <br />
       <div class="form-row">
-        <label for="gender">gender:</label>
+        <label for="gender">Gender:</label>
         <select id="gender">
           <option value="male">Male</option>
           <option value="female">Female</option>
@@ -40,14 +40,15 @@
         <button class="admin-button">Admin</button>
       </div>
     </div>
+
     <div class="log-container">
       <h2><i>ENTRY LOGS</i></h2>
       <h3 id="today-date"><i>DD/MM/YYYY</i></h3>
       <table class="log-table" id="log-table">
         <tr>
           <th>Name</th>
-          <th>Floor name</th>
-          <th>Room no</th>
+          <th>Floor</th>
+          <th>Room</th>
           <th>Reason</th>
           <th>Time of Entry</th>
           <th>Time of Exit</th>
@@ -55,97 +56,117 @@
         </tr>
       </table>
     </div>
-  </body>
-  <script>
-    async function addEntry() {
-      var name = document.getElementById("name").value;
-      var phone = document.getElementById("phone").value;
-      var floor = document.getElementById("floor").value;
-      var gender = document.getElementById("gender").value;
-      var room = document.getElementById("room").value;
-      var reason = document.getElementById("reason").value;
-      var timeOfEntry = new Date().toLocaleTimeString();
 
-      if (!name || !phone) {
-        alert("Please enter both name and phone number.");
-        return;
-      }
+    <h3>Pending Visits</h3>
+    <ul id="pending-visits-list"></ul>
+    <button onclick="fetchPendingVisits()">Load Pending Visits</button>
 
-      var table = document.getElementById("log-table");
-      var row = table.insertRow(-1);
-      row.insertCell(0).textContent = name;
-      row.insertCell(1).textContent = floor;
-      row.insertCell(2).textContent = room;
-      row.insertCell(3).textContent = reason;
-      row.insertCell(4).textContent = timeOfEntry;
-      var exitTimeCell = row.insertCell(5);
-      var exitCell = row.insertCell(6);
-      
-      var exitButton = document.createElement("button");
-      exitButton.textContent = "Exit";
-      exitButton.className = "exit-button";
-      exitButton.onclick = async function () {
-        var timeOfExit = new Date().toLocaleTimeString();
-        exitTimeCell.textContent = timeOfExit;
-        
-        let model = {
+    <script>
+      async function addEntry() {
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var floor = document.getElementById("floor").value;
+        var gender = document.getElementById("gender").value;
+        var room = document.getElementById("room").value;
+        var reason = document.getElementById("reason").value;
+        var timeOfEntry = new Date().toLocaleTimeString();
+
+        if (!name || !phone) {
+          alert("Please enter both name and phone number.");
+          return;
+        }
+
+        let data = {
+          FullName: name,
           PhoneNumber: phone,
-          ExitTime: timeOfExit,
+          Floor: floor,
+          Gender: gender,
+          Room: room,
+          Reason: reason,
+          EntryTime: timeOfEntry,
         };
 
         try {
-          let response = await fetch("http://localhost:5000/api/user/UpdateExitTime", {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(model),
+          let response = await fetch("http://localhost:5000/api/user/add", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
           });
-
-          if (!response.ok) {
-            let errorText = await response.text();
-            throw new Error("Server Error: " + errorText);
-          }
 
           let result = await response.json();
           console.log("Server Response:", result);
+          fetchPendingVisits(); // Refresh pending visits after adding entry
         } catch (error) {
           console.error("Error:", error);
-          alert("Failed to update exit time on the server.");
+          alert("Failed to save entry to the server.");
         }
-      };
-      exitCell.appendChild(exitButton);
-      
-      let data = {
-        FullName: name,
-        PhoneNumber: phone,
-        Floor: floor,
-        Gender: gender,
-        Room: room,
-        Reason: reason,
-        EntryTime: timeOfEntry,
-      };
-
-      try {
-        let response = await fetch("http://localhost:5000/api/user/add", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-
-        if (!response.ok) {
-          let errorText = await response.text();
-          throw new Error("Server Error: " + errorText);
-        }
-
-        let result = await response.json();
-        console.log("Server Response:", result);
-      } catch (error) {
-        console.error("Error:", error);
-        alert("Failed to save entry to the server.");
       }
-    }
-  </script>
+
+      async function updateExitTime(visitId) {
+        let timeOfExit = new Date().toLocaleTimeString();
+
+        let model = {
+          VisitId: visitId, // Use visit _id instead of phone number
+          ExitTime: timeOfExit,
+        };
+
+        
+        try {
+          let response = await fetch(
+            "http://localhost:5000/api/user/updateExitTime",
+            {
+              method: "PUT",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(model),
+            }
+          );
+
+          let result = await response.json();
+          alert(result.message);
+          fetchPendingVisits(); // Refresh list after updating exit time
+        } catch (error) {
+          console.error("Error updating exit time:", error);
+        }
+      }
+
+      async function fetchPendingVisits() {
+        let userName = document.getElementById("name").value.trim();
+
+        if (!userName) {
+          alert("Please enter your name before checking pending visits.");
+          return;
+        }
+        try {
+          let response = await fetch(`http://localhost:5000/api/user/getPending?fullName=${encodeURIComponent(userName)}`);
+          let users = await response.json();
+
+          let list = document.getElementById("pending-visits-list");
+          list.innerHTML = ""; // Clear the list before adding new items
+
+          if (users.length === 0) {
+            let li = document.createElement("li");
+            li.textContent = "No pending visits found for this user.";
+            list.appendChild(li);
+            return;
+        }
+
+          users.forEach((user) => {
+            if (!user.exitTime || user.exitTime === "") {
+              let li = document.createElement("li");
+              li.textContent = `Name: ${user.fullName}, Entry Time: ${user.entryTime}`;
+
+              let updateButton = document.createElement("button");
+              updateButton.textContent = "Set Exit Time";
+              updateButton.onclick = () => updateExitTime(user.id); // Send visit ID
+
+              li.appendChild(updateButton);
+              list.appendChild(li);
+            }
+          });
+        } catch (error) {
+          console.error("Error fetching pending visits:", error);
+        }
+      }
+    </script>
+  </body>
 </html>

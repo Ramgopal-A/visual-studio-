@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h2>Admin Panel</h2>
+
+    <button onclick="fetchUsers()">View Users</button>
+    <button onclick="fetchPatients()">View Patients</button>
+
+    <h3>Patients List</h3>
+    <ul id="patients-list"></ul>
+
+    <h3>Add Patient</h3>
+    <label>Name:</label> <input type="text" id="patient-name"><br>
+    <label>Age:</label> <input type="number" id="patient-age"><br>
+    <label>Gender:</label> 
+    <select id="patient-gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select><br>
+    <label>Condition:</label> <input type="text" id="patient-condition"><br>
+    <button onclick="addPatient()">Add Patient</button>
+
+    <script>
+        async function fetchUsers() {
+            let response = await fetch("http://localhost:5000/api/user/get");
+            let users = await response.json();
+            console.log("Users Data:",users);
+        }
+
+        async function fetchPatients() {
+            let response = await fetch("http://localhost:5000/api/patient/get",{
+                method: "GET",
+                headers:{
+                    "Content-Type": "application/json"
+                }
+            })
+            let patients = await response.json();
+            console.log("Patients Data:", patients);
+
+            let list = document.getElementById("patients-list");
+            list.innerHTML = "";
+            patients.forEach(patient => {
+                let li = document.createElement("li");
+                li.textContent = `Name: ${patient.name}, Age: ${patient.age}, Gender: ${patient.gender} Condition: ${patient.condition}`;
+                list.appendChild(li);
+            });
+        }
+
+        async function addPatient() {
+            let data = {
+                Name: document.getElementById("patient-name").value,
+                Age: parseInt(document.getElementById("patient-age").value),
+                Gender: document.getElementById("patient-gender").value,
+                Condition: document.getElementById("patient-condition").value
+            };
+
+            let response = await fetch("http://localhost:5000/api/patient/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+
+            let result = await response.json();
+            alert(result.message);
+            fetchPatients(); // Refresh list after adding
+        }
+    </script>
+</body>
+</html>

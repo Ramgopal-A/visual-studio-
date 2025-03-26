@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RfZoTAn+YyY64ov/AqI0of0GMf5YOhft3RIi7BO1nNc=",
+  "Hash": "YJLF4uH5fr0kYxF5BA6pU/ZUdkeyAu/gK0ZEBLb8sA8=",
   "Source": "hospitalManagment",
   "BasePath": "_content/hospitalManagment",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "hospitalManagment\\wwwroot",
       "Source": "hospitalManagment",
-      "ContentRoot": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\wwwroot\\",
+      "ContentRoot": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\wwwroot\\",
       "BasePath": "_content/hospitalManagment",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
+      "Identity": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
       "SourceId": "hospitalManagment",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\",
+      "ContentRoot": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/hospitalManagment",
       "RelativePath": "index#[.{fingerprint=4jaqiilcal}]?.html.gz",
       "AssetKind": "All",
@@ -28,20 +28,20 @@
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html",
+      "RelatedAsset": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "Fingerprint": "pg7pwfiij9",
       "Integrity": "97FDUr87uzvOgoEhNFOthddIWTsIQ7/Yq3IAAj8rJks=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html"
+      "OriginalItemSpec": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html"
     },
     {
-      "Identity": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html",
+      "Identity": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html",
       "SourceId": "hospitalManagment",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\wwwroot\\",
+      "ContentRoot": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\wwwroot\\",
       "BasePath": "_content/hospitalManagment",
       "RelativePath": "index#[.{fingerprint}]?.html",
       "AssetKind": "All",
@@ -62,7 +62,7 @@
   "Endpoints": [
     {
       "Route": "index.4jaqiilcal.html",
-      "AssetFile": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
+      "AssetFile": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -125,7 +125,7 @@
     },
     {
       "Route": "index.4jaqiilcal.html",
-      "AssetFile": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html",
+      "AssetFile": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -170,7 +170,7 @@
     },
     {
       "Route": "index.4jaqiilcal.html.gz",
-      "AssetFile": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
+      "AssetFile": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -223,7 +223,7 @@
     },
     {
       "Route": "index.html",
-      "AssetFile": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
+      "AssetFile": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
@@ -278,7 +278,7 @@
     },
     {
       "Route": "index.html",
-      "AssetFile": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html",
+      "AssetFile": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\wwwroot\\index.html",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -315,7 +315,7 @@
     },
     {
       "Route": "index.html.gz",
-      "AssetFile": "D:\\full stack\\visual studio\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
+      "AssetFile": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\obj\\Debug\\net9.0\\compressed\\fhnd45s2jv-4jaqiilcal.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {

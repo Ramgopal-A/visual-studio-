@@ -1,39 +1,69 @@
 ﻿using MongoDB.Driver;
+using MongoDB.Bson;
 
 public class MongoDbService
 {
+    private readonly IMongoCollection<User> _usersCollection;
     private readonly IMongoCollection<Patient> _patientsCollection;
 
     public MongoDbService(IMongoDatabase database)
     {
-        _patientsCollection = database.GetCollection<Patient>("user");
+        _usersCollection = database.GetCollection<User>("user");
+        _patientsCollection = database.GetCollection<Patient>("patient");
+
     }
 
-    public async Task AddPatientAsync(Patient patient)
+    public async Task AddUserAsync(User model)
     {
-        await _patientsCollection.InsertOneAsync(patient);
-    }
-    //To verify the email id while login
-    public async Task<Patient?> GetPatientByEmailAsync(string email)
-    {
-        return await _patientsCollection.Find(p => p.Email == email).FirstOrDefaultAsync();
-    }
-     public async Task UpdatePatientAsync(Patient patient)
-    {
-        var filter = Builders<Patient>.Filter.Eq(p => p.Email, patient.Email);
-        await _patientsCollection.ReplaceOneAsync(filter, patient);
+        await _usersCollection.InsertOneAsync(model);
     }
 
-    public async Task AddLogEntryAsync(string email, LogEntry logEntry)
+    public async Task AddPatientAsync(Patient model)
     {
-        var filter = Builders<Patient>.Filter.Eq(p => p.Email, email);
-        var update = Builders<Patient>.Update.Push(p => p.Logs, logEntry);
-        await _patientsCollection.UpdateOneAsync(filter, update);
+        await _patientsCollection.InsertOneAsync(model);
     }
 
-    public async Task<List<LogEntry>> GetLogsByEmailAsync(string email)
+    public async Task<List<User>> GetUsersAsync()
     {
-        var patient = await _patientsCollection.Find(p => p.Email == email).FirstOrDefaultAsync();
-        return patient?.Logs ?? new List<LogEntry>();
+        return await _usersCollection.Find(FilterDefinition<User>.Empty).ToListAsync();
+
     }
+
+    public async Task<List<Patient>> GetPatientsAsync()
+    {
+        return await _patientsCollection.Find(FilterDefinition<Patient>.Empty).ToListAsync();
+
+    }
+
+    public async Task<bool> UpdateExitTimeAsync(string visitId, string exitTime)
+    {
+        if (string.IsNullOrEmpty(exitTime))
+        {
+            Console.WriteLine("Error: Exit time is empty.");
+            return false;
+        }
+
+        var filter = Builders<User>.Filter.Eq("_id", ObjectId.Parse(visitId));
+        var update = Builders<User>.Update.Set(p => p.ExitTime, exitTime);
+
+
+        var result = await _usersCollection.UpdateOneAsync(filter, update);
+        return result.ModifiedCount > 0;
+    }
+
+    public async Task<List<User>> GetPendingVisitsAsync(string fullName)
+    {
+        var filter = Builders<User>.Filter.And(
+            Builders<User>.Filter.Eq(u => u.FullName, fullName),
+            Builders<User>.Filter.Or(
+                Builders<User>.Filter.Eq(u => u.ExitTime, null),
+                Builders<User>.Filter.Eq(u => u.ExitTime, "")
+            )
+        );
+
+        return await _usersCollection.Find(filter).ToListAsync();
+    }
+
+
+
 }
