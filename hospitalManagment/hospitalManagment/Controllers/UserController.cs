@@ -2,19 +2,24 @@
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
-
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 [Route("api/user")]
 [ApiController]
 public class UserController : ControllerBase
 {
     private readonly MongoDbService _mongoDbService;
+    private readonly IMongoCollection<User> _usersCollection;
+    private readonly ILogger<UserController> _logger;
 
 
-    public UserController(MongoDbService mongoDbService)
+
+    public UserController(MongoDbService mongoDbService, ILogger<UserController> logger)
     {
         _mongoDbService = mongoDbService;
+        _usersCollection = _mongoDbService.GetUserCollection();
+        _logger = logger;
     }
 
     [HttpPost("add")]
@@ -84,9 +89,62 @@ public class UserController : ControllerBase
         {
             return StatusCode(500, new { error = "Internal Server Error", details = ex.Message });
         }
-    
+
 
     }
+    [HttpGet("getSortedUsers")]
+    public async Task<IActionResult> GetSortedUsers(
+    [FromQuery] string? searchName = null,
+    [FromQuery] string? exitTimeStatus = null,
+    [FromQuery] string? floor = null,
+    [FromQuery] string? room = null,
+    [FromQuery] string? sortBy = "entryTime",
+    [FromQuery] string? order = "asc")
+    {
+
+        _logger.LogInformation($"Received Params - Search: {searchName}, ExitTimeStatus: {exitTimeStatus}, Floor: {floor}, Room: {room}, SortBy: {sortBy}, Order: {order}");
+
+
+        var filter = Builders<User>.Filter.Empty;
+
+        if (!string.IsNullOrEmpty(searchName))
+        {
+            filter &= Builders<User>.Filter.Regex("fullName", new BsonRegularExpression(searchName, "i"));
+        }
+
+        if (!string.IsNullOrEmpty(floor))
+        {
+            filter &= Builders<User>.Filter.Regex("floor", new BsonRegularExpression(floor, "i"));
+        }
+
+        if (!string.IsNullOrEmpty(room))
+        {
+            filter &= Builders<User>.Filter.Regex("room", new BsonRegularExpression(room, "i"));
+        }
+
+
+        if (exitTimeStatus == "pending")
+        {
+            filter &= Builders<User>.Filter.Eq<DateTime?>("exitTime", null);
+        }
+        else if (exitTimeStatus == "completed")
+        {
+            filter &= Builders<User>.Filter.Ne<DateTime?>("exitTime", null);
+        }
+
+        var sortDefinition = string.Equals(order, "desc", StringComparison.OrdinalIgnoreCase)
+            ? Builders<User>.Sort.Descending(sortBy)
+            : Builders<User>.Sort.Ascending(sortBy);
+
+        var users = await _usersCollection.Find(filter).Sort(sortDefinition).ToListAsync();
+
+        return Ok(users);
+    }
+
+
+
+
+}
 
 
 

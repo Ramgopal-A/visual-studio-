@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel</title>
-</head>
-<body>
+  </head>
+  <body>
     <h2>Admin Panel</h2>
 
     <button onclick="fetchUsers()">View Users</button>
@@ -15,60 +15,177 @@
     <ul id="patients-list"></ul>
 
     <h3>Add Patient</h3>
-    <label>Name:</label> <input type="text" id="patient-name"><br>
-    <label>Age:</label> <input type="number" id="patient-age"><br>
-    <label>Gender:</label> 
+    <label>Name:</label> <input type="text" id="patient-name" /><br />
+    <label>Age:</label> <input type="number" id="patient-age" /><br />
+    <label>Gender:</label>
     <select id="patient-gender">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-    </select><br>
-    <label>Condition:</label> <input type="text" id="patient-condition"><br>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option></select
+    ><br />
+    <label>Condition:</label> <input type="text" id="patient-condition" /><br />
     <button onclick="addPatient()">Add Patient</button>
 
+    <h3>Sort Users</h3>
+
+    <label for="searchName">Search Name:</label>
+    <input
+      type="text"
+      id="searchName"
+      placeholder="Enter name..."
+      oninput="fetchSortedUsers()"
+    />
+
+    <label for="sortField">Sort by:</label>
+    <select id="sortField">
+      <option value="fullName">Name</option>
+      <option value="entryTime">Entry Time</option>
+      <option value="exitTime">Exit Time</option>
+      <option value="floor">Floor Name</option>
+      <option value="room">Room Number</option>
+    </select>
+
+    <label for="floorFilter">Floor:</label>
+    <select id="floorFilter" onchange="updateRoomOptions()">
+      <option value="">All Floors</option>
+      <option value="1">Floor 1</option>
+      <option value="2">Floor 2</option>
+      <option value="3">Floor 3</option>
+    </select>
+
+    <label for="roomFilter">Room:</label>
+    <select id="roomFilter">
+      <option value="">All Rooms</option>
+    </select>
+
+    <label for="sortOrder">Order:</label>
+    <select id="sortOrder">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+
+    <label for="exitTimeFilter">Exit Time Status:</label>
+    <select id="exitTimeFilter">
+      <option value="">All</option>
+      <option value="pending">Pending Exit</option>
+      <option value="completed">Completed Exit</option>
+    </select>
+
+    <button onclick="fetchSortedUsers()">Sort</button>
+
+    <h3>User List</h3>
+    <ul id="user-list"></ul>
+
     <script>
-        async function fetchUsers() {
-            let response = await fetch("http://localhost:5000/api/user/get");
-            let users = await response.json();
-            console.log("Users Data:",users);
+      async function fetchUsers() {
+        let response = await fetch("http://localhost:5000/api/user/get");
+        let users = await response.json();
+        console.log("Users Data:", users);
+      }
+
+      async function fetchPatients() {
+        let response = await fetch("http://localhost:5000/api/patient/get", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        let patients = await response.json();
+        console.log("Patients Data:", patients);
+
+        let list = document.getElementById("patients-list");
+        list.innerHTML = "";
+        patients.forEach((patient) => {
+          let li = document.createElement("li");
+          li.textContent = `Name: ${patient.name}, Age: ${patient.age}, Gender: ${patient.gender} Condition: ${patient.condition}`;
+          list.appendChild(li);
+        });
+      }
+
+      async function addPatient() {
+        let data = {
+          Name: document.getElementById("patient-name").value,
+          Age: parseInt(document.getElementById("patient-age").value),
+          Gender: document.getElementById("patient-gender").value,
+          Condition: document.getElementById("patient-condition").value,
+        };
+
+        let response = await fetch("http://localhost:5000/api/patient/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        let result = await response.json();
+        alert(result.message);
+        fetchPatients(); // Refresh list after adding
+      }
+
+      async function fetchSortedUsers() {
+        let searchName = document.getElementById("searchName").value.trim();
+        let sortBy = document.getElementById("sortField").value;
+        let order = document.getElementById("sortOrder").value;
+        let exitTimeStatus = document.getElementById("exitTimeFilter").value;
+        let floor = document.getElementById("floorFilter")?.value || "";
+        let room = document.getElementById("roomFilter")?.value || "";
+
+        let queryParams = new URLSearchParams({
+          searchName,
+          sortBy,
+          order,
+          exitTimeStatus,
+          floor,
+          room,
+        });
+
+        try {
+            
+            let url = `http://localhost:5000/api/user/getSortedUsers?${queryParams.toString()}`;
+            let response=await fetch(url);
+            if (!response.ok) {
+            throw new Error(`API request failed: ${response.status}`);
+          }
+
+          let users = await response.json();
+          console.log("Users fetched:", users);
+
+          let list = document.getElementById("user-list");
+          list.innerHTML = ""; // Clear previous data
+
+          if (users.length === 0) {
+            let li = document.createElement("li");
+            li.textContent = "No users found.";
+            list.appendChild(li);
+            return;
+          }
+
+          users.forEach((user) => {
+            let li = document.createElement("li");
+            li.textContent = `Name: ${user.fullName}, Floor: ${
+              user.floor
+            }, Room: ${user.room}, Entry Time: ${user.entryTime}, Exit Time: ${
+              user.exitTime || "Pending"
+            }`;
+            list.appendChild(li);
+          });
+        } catch (error) {
+          console.error("Error fetching sorted users:", error.message);
         }
-
-        async function fetchPatients() {
-            let response = await fetch("http://localhost:5000/api/patient/get",{
-                method: "GET",
-                headers:{
-                    "Content-Type": "application/json"
-                }
-            })
-            let patients = await response.json();
-            console.log("Patients Data:", patients);
-
-            let list = document.getElementById("patients-list");
-            list.innerHTML = "";
-            patients.forEach(patient => {
-                let li = document.createElement("li");
-                li.textContent = `Name: ${patient.name}, Age: ${patient.age}, Gender: ${patient.gender} Condition: ${patient.condition}`;
-                list.appendChild(li);
-            });
+      }
+      function updateRoomOptions() {
+        let floor = document.getElementById("floorFilter").value;
+        let roomFilter = document.getElementById("roomFilter");
+        roomFilter.innerHTML = "<option value=''>All Rooms</option>";
+        if (floor === "1") {
+          roomFilter.innerHTML +=
+            "<option value='101'>Room 101</option><option value='102'>Room 102</option>";
+        } else if (floor === "2") {
+          roomFilter.innerHTML +=
+            "<option value='201'>Room 201</option><option value='202'>Room 202</option>";
+        } else if (floor === "3") {
+          roomFilter.innerHTML +=
+            "<option value='301'>Room 301</option><option value='302'>Room 302</option>";
         }
-
-        async function addPatient() {
-            let data = {
-                Name: document.getElementById("patient-name").value,
-                Age: parseInt(document.getElementById("patient-age").value),
-                Gender: document.getElementById("patient-gender").value,
-                Condition: document.getElementById("patient-condition").value
-            };
-
-            let response = await fetch("http://localhost:5000/api/patient/add", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-
-            let result = await response.json();
-            alert(result.message);
-            fetchPatients(); // Refresh list after adding
-        }
+      }
     </script>
-</body>
+  </body>
 </html>

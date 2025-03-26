@@ -9,5 +9,6 @@
     "\\hospitalManagment\\Properties",
     "\\hospitalManagment\\Services"
   ],
+  "SelectedNode": "\\hospitalManagment\\Services\\MongoDbService.cs",
   "PreviewInSolutionExplorer": false
 }

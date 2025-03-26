@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Services\\MongoDbService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Services\\MongoDbService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Models\\Patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Models\\Patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Controllers\\PatientController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Controllers\\PatientController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Controllers\\UserController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Models\\Patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Models\\Patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Controllers\\PatientController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:hospitalManagment\\Controllers\\PatientController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ramgo\\AppData\\Local\\SourceServer\\c9e3b72425079c67096d2d0e2d4f86d7827b3936947a36a11673ba37ef5d6435\\hospitalManagment\\hospitalManagment\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -45,57 +45,58 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Models\\User.cs",
               "RelativeDocumentMoniker": "hospitalManagment\\Models\\User.cs",
               "ToolTip": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Models\\User.cs",
               "RelativeToolTip": "hospitalManagment\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-05T16:28:10.899Z",
               "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Program.cs",
-              "RelativeDocumentMoniker": "hospitalManagment\\Program.cs",
-              "ToolTip": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Program.cs",
-              "RelativeToolTip": "hospitalManagment\\Program.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T06:04:23.521Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "hospitalManagment\\Controllers\\UserController.cs",
               "ToolTip": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Controllers\\UserController.cs",
               "RelativeToolTip": "hospitalManagment\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAF0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T16:15:30.2Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-06T16:15:30.2Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "MongoDbService.cs",
               "DocumentMoniker": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Services\\MongoDbService.cs",
               "RelativeDocumentMoniker": "hospitalManagment\\Services\\MongoDbService.cs",
               "ToolTip": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Services\\MongoDbService.cs",
               "RelativeToolTip": "hospitalManagment\\Services\\MongoDbService.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T16:26:08.276Z"
+              "WhenOpened": "2025-03-05T16:26:08.276Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Program.cs",
+              "RelativeDocumentMoniker": "hospitalManagment\\Program.cs",
+              "ToolTip": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Program.cs",
+              "RelativeToolTip": "hospitalManagment\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T06:04:23.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "PatientController.cs",
               "DocumentMoniker": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Controllers\\PatientController.cs",
               "RelativeDocumentMoniker": "hospitalManagment\\Controllers\\PatientController.cs",
@@ -107,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Patient.cs",
               "DocumentMoniker": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\Models\\Patient.cs",
               "RelativeDocumentMoniker": "hospitalManagment\\Models\\Patient.cs",
@@ -119,13 +120,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\appsettings.json",
               "RelativeDocumentMoniker": "hospitalManagment\\appsettings.json",
               "ToolTip": "D:\\full stack\\visual studio\\visual-studio-\\hospitalManagment\\hospitalManagment\\appsettings.json",
               "RelativeToolTip": "hospitalManagment\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-03-05T16:24:38.718Z"
             },
