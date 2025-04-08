@@ -41,4 +41,20 @@ public class PatientController : ControllerBase
         }
     }
 
+    [HttpGet("getSortedPatients")]
+    public async Task<IActionResult> GetSortedPatients(
+    [FromQuery] string? searchName = null,
+    [FromQuery] string? room = null,
+    [FromQuery] string? condition = null,
+    [FromQuery] string? gender = null,
+    [FromQuery] int? minAge = null,
+    [FromQuery] int? maxAge = null,
+    [FromQuery] string sortBy = "Name",
+    [FromQuery] string order = "asc")
+    {
+        var patients = await _mongoDbService.GetSortedPatientsAsync(searchName, room, condition, gender, minAge, maxAge, sortBy, order);
+        return Ok(patients);
+    }
+
+
 }

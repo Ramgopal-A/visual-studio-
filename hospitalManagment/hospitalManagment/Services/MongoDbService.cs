@@ -112,4 +112,58 @@ public class MongoDbService
 
 
 
+
+    public async Task<List<Patient>> GetSortedPatientsAsync(
+    string? searchName, string? room, string? condition, string? gender,
+    int? minAge, int? maxAge, string sortBy, string order)
+    {
+        var filter = Builders<Patient>.Filter.Empty;
+
+        // 🔹 Filter by name (case-insensitive)
+        if (!string.IsNullOrEmpty(searchName))
+        {
+            filter &= Builders<Patient>.Filter.Regex("Name", new BsonRegularExpression(searchName, "i"));
+        }
+
+        // 🔹 Filter by room number
+        if (!string.IsNullOrEmpty(room))
+        {
+            filter &= Builders<Patient>.Filter.Eq("Room", room);
+        }
+
+        // 🔹 Filter by condition (Safe / Not Safe)
+        if (!string.IsNullOrEmpty(condition))
+        {
+            filter &= Builders<Patient>.Filter.Eq("Condition", condition);
+        }
+
+        // 🔹 Filter by gender
+        if (!string.IsNullOrEmpty(gender))
+        {
+            filter &= Builders<Patient>.Filter.Eq("Gender", gender);
+        }
+
+        // 🔹 Filter by age range
+        if (minAge.HasValue)
+        {
+            filter &= Builders<Patient>.Filter.Gte("Age", minAge.Value);
+        }
+        if (maxAge.HasValue)
+        {
+            filter &= Builders<Patient>.Filter.Lte("Age", maxAge.Value);
+        }
+
+        // 🔹 Sorting Logic
+        var sortDefinition = order.ToLower() == "desc"
+            ? Builders<Patient>.Sort.Descending(sortBy)
+            : Builders<Patient>.Sort.Ascending(sortBy);
+
+        return await _patientsCollection.Find(filter)
+                                        .Sort(sortDefinition)
+                                        .ToListAsync();
+    }
+
+
+
+
 }

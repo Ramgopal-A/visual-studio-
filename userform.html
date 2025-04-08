@@ -257,7 +257,7 @@
         };
 
         try {
-          let response = await fetch("http://localhost:5000/api/user/add", {
+          let response = await fetch("http://localhost:8080/api/user/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -282,7 +282,7 @@
 
         try {
           let response = await fetch(
-            "http://localhost:5000/api/user/updateExitTime",
+            "http://localhost:8080/api/user/updateExitTime",
             {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
@@ -308,7 +308,7 @@
 
         try {
           let response = await fetch(
-            `http://localhost:5000/api/user/getPending?fullName=${encodeURIComponent(
+            `http://localhost:8080/api/user/getPending?fullName=${encodeURIComponent(
               userName
             )}`
           );

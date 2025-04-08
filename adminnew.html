@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <style>
+      /* Reset and Global Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url("background\ \(2\).png") center/cover no-repeat;
+        padding: 20px;
+      }
+
+      /* Admin Panel Container */
+      .admin {
+        background: rgba(255, 255, 255, 0.45);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        text-align: center;
+        width: 500px;
+        min-height: 300px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      /* Hover effect */
+      .admin:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Admin Heading */
+      .admin h2 {
+        color: #2553a3;
+        margin-bottom: 25px;
+        font-size: 26px;
+        font-weight: 600;
+      }
+
+      /* Buttons */
+      .admin button {
+        width: 90%;
+        padding: 15px;
+        margin: 12px 0;
+        border: none;
+        border-radius: 10px;
+        background: #7bbbff;
+        color: #2553a3;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(5px);
+      }
+
+      /* Button Hover Effect */
+      .admin button:hover {
+        background: #268bca;
+        box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Hide everything except the .admin container */
+      body > *:not(.admin) {
+        display: none;
+      }
+
+      /* Parent Wrapper to Ensure Equal Heights */
+      .container-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Space between sections */
+      }
+
+      /* Shared Styling for Both Containers */
+      .patient-fetch {
+        display: none; /* Initially hidden */
+        width: 60%; /* Same width */
+        min-height: 350px; /* Same minimum height */
+        height: auto; /* Allow flexibility */
+        margin: 20px auto;
+        padding: 25px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Align content properly */
+      }
+      .patient-data {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+      }
+
+      .patient-add {
+        display: none; /* Initially hidden */
+        width: 30%; /* Same width */
+        min-height: 350px; /* Same minimum height */
+        height: auto; /* Allow flexibility */
+        margin: 20px auto;
+        padding: 25px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Align content properly */
+      }
+      /* Make Both Containers the Same Height */
+      .patient-fetch,
+      .patient-add {
+        display: flex;
+        align-items: stretch;
+      }
+
+      /* Titles */
+      .patient-fetch h3,
+      .patient-add h3 {
+        text-align: center;
+        color: #2553a3;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      /* Input Fields */
+      .patient-add input,
+      .patient-add select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 8px;
+        background: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        font-size: 16px;
+        outline: none;
+      }
+
+      /* Buttons */
+      .patient-add button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 8px;
+        color: #2553a3;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .patient-add button:hover {
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+      }
+
+      /* Patient List */
+      #patients-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      #patients-list li {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 12px;
+        margin: 5px 0;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      #patients-list li:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .patient-sort {
+        padding: 10px; /* Reduced padding to make height smaller */
+        border-radius: 10px;
+        width: 100%;
+        max-width: 800px;
+        margin: 10px auto; /* Adjusted margin */
+        position: relative;
+        z-index: 2;
+      }
+
+      .patient-fetch {
+        margin-top: 10px; /* Pushes patient-fetch lower */
+      }
+
+      .patient-sort .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 5px; /* Reduced gap */
+      }
+
+      .patient-sort label {
+        font-weight: bold;
+        font-size: 12px; /* Smaller font */
+        margin-bottom: 3px;
+        display: block;
+      }
+
+      .patient-sort input,
+      .patient-sort select {
+        width: 100%;
+        padding: 5px; /* Smaller input box */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 12px;
+        background: #f9f9f9;
+      }
+
+      .patient-sort .row div {
+        width: 50%;
+      }
+
+      .patient-sort button {
+        width: 100%;
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 8px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+
+      .patient-sort button:hover {
+        background: #0056b3;
+      }
+
+      /*user styling*/
+      .user-fetch {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.45);
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+      }
+
+      h3 {
+        text-align: center;
+        color: #333;
+        font-size: 30px;
+        margin-bottom: 10px;
+        font-family: "Times New Roman", Times, serif;
+      }
+      h2 {
+        text-align: center;
+        color: #333;
+        font-size: 20px;
+        margin-bottom: 10px;
+        font-family: "Times New Roman", Times, serif;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+        color: #444;
+        font-size: 14px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        background: #f9f9f9;
+        transition: border 0.3s ease-in-out;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: #007bff;
+        outline: none;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease-in-out, transform 0.2s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      .user-data {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f9f9f9;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+      }
+
+      #user-list {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #user-list li {
+        padding: 10px;
+        margin-top: 5px;
+        background: #fff;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        transition: background 0.3s ease-in-out;
+      }
+
+      #user-list li:hover {
+        background: #f1f1f1;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      label {
+        min-width: 60px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 600px) {
+        .admin {
+          width: 90%;
+          padding: 30px;
+        }
+        .container-wrapper {
+          flex-direction: column;
+          align-items: center;
+        }
+        .patient-fetch,
+        .patient-add {
+          width: 90%;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin">
+      <h2>Admin Panel</h2>
+
+      <button onclick="fetchUsers()">View Users</button>
+      <button onclick="fetchPatients()">View Patients</button>
+    </div>
+
+    <div class="patient-fetch">
+      <div class="patient-sort">
+        <!-- Name and Condition -->
+        <div class="row">
+          <div>
+            <label for="patientSearchName">Search Name:</label>
+            <input
+              type="text"
+              id="patientSearchName"
+              placeholder="Enter name..."
+              oninput="fetchSortedPatients()"
+            />
+          </div>
+          <div>
+            <label for="patientCondition">Condition:</label>
+            <select id="patientCondition">
+              <option value="">All</option>
+              <option value="Safe">Safe</option>
+              <option value="Not Safe">Not Safe</option>
+            </select>
+          </div>
+          <div>
+            <label for="patientRoom">Room:</label>
+            <input
+              type="text"
+              id="patientRoom"
+              placeholder="Enter Room Number..."
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="patientGender">Gender:</label>
+            <select id="patientGender">
+              <option value="">All</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div>
+            <label for="patientMinAge">Min Age:</label>
+            <input type="number" id="patientMinAge" />
+          </div>
+          <div>
+            <label for="patientMaxAge">Max Age:</label>
+            <input type="number" id="patientMaxAge" />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="patientSortBy">Sort By:</label>
+            <select id="patientSortBy">
+              <option value="Name">Name</option>
+              <option value="Age">Age</option>
+              <option value="Condition">Condition</option>
+            </select>
+          </div>
+          <div>
+            <label for="patientSortOrder">Order:</label>
+            <select id="patientSortOrder">
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+            </select>
+          </div>
+
+          <button onclick="fetchSortedPatients()">Sort</button>
+        </div>
+      </div>
+      <div class="patient-data">
+        <h3>Patient List</h3>
+        <ul id="patient-list"></ul>
+      </div>
+    </div>
+
+    <div class="patient-add">
+      <h3>Add Patient</h3>
+      <label>Name:</label> <input type="text" id="patient-name" /><br />
+      <label>Age:</label> <input type="number" id="patient-age" /><br />
+      <label>Gender:</label>
+      <select id="patient-gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option></select
+      ><br />
+      <label>Condition:</label>
+      <input type="text" id="patient-condition" /><br />
+      <label>Room:</label> <input type="text" id="patient-room" /><br />
+      <button onclick="addPatient()">Add Patient</button>
+    </div>
+
+    <div class="user-fetch">
+      <h3>Sort Users</h3>
+
+      <div class="row">
+        <label for="searchName">Search Name:</label>
+        <input
+          type="text"
+          id="searchName"
+          placeholder="Enter name..."
+          oninput="fetchSortedUsers()"
+        />
+
+        <label for="sortField">Sort by:</label>
+        <select id="sortField">
+          <option value="fullName">Name</option>
+          <option value="entryTime">Entry Time</option>
+          <option value="exitTime">Exit Time</option>
+          <option value="floor">Floor Name</option>
+          <option value="room">Room Number</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="floorFilter">Floor:</label>
+        <select id="floorFilter" onchange="updateRoomOptions()">
+          <option value="">All Floors</option>
+          <option value="1">Floor 1</option>
+          <option value="2">Floor 2</option>
+          <option value="3">Floor 3</option>
+        </select>
+
+        <label for="roomFilter">Room:</label>
+        <select id="roomFilter">
+          <option value="">All Rooms</option>
+        </select>
+
+        <label for="sortOrder">Order:</label>
+        <select id="sortOrder">
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="exitTimeFilter">Exit Time Status:</label>
+        <select id="exitTimeFilter">
+          <option value="">All</option>
+          <option value="pending">Pending Exit</option>
+          <option value="completed">Completed Exit</option>
+        </select>
+
+        <button onclick="fetchSortedUsers()">Sort</button>
+      </div>
+      <div class="user-data">
+        <h2>User List</h2>
+        <ul id="user-list"></ul>
+      </div>
+    </div>
+    <script>
+      async function fetchUsers() {
+        let response = await fetch("http://localhost:5000/api/user/get");
+        let users = await response.json();
+        console.log("Users Data:", users);
+      }
+
+      async function fetchPatients() {
+        let response = await fetch("http://localhost:5000/api/patient/get", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        let patients = await response.json();
+        console.log("Patients Data:", patients);
+
+        let list = document.getElementById("patients-list");
+        list.innerHTML = "";
+        patients.forEach((patient) => {
+          let li = document.createElement("li");
+          li.textContent = `Name: ${patient.name}, Age: ${patient.age}, Gender: ${patient.gender}, Condition: ${patient.condition}`;
+          list.appendChild(li);
+        });
+      }
+
+      async function addPatient() {
+        let data = {
+          Name: document.getElementById("patient-name").value,
+          Age: parseInt(document.getElementById("patient-age").value),
+          Gender: document.getElementById("patient-gender").value,
+          Condition: document.getElementById("patient-condition").value,
+          Room: document.getElementById("patient-room").value,
+        };
+
+        let response = await fetch("http://localhost:5000/api/patient/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        let result = await response.json();
+        alert(result.message);
+        fetchPatients(); // Refresh list after adding
+      }
+      async function fetchSortedUsers() {
+        let searchName = document.getElementById("searchName").value.trim();
+        let sortBy = document.getElementById("sortField").value;
+        let order = document.getElementById("sortOrder").value;
+        let exitTimeStatus = document.getElementById("exitTimeFilter").value;
+        let floor = document.getElementById("floorFilter")?.value || "";
+        let room = document.getElementById("roomFilter")?.value || "";
+
+        let queryParams = new URLSearchParams({
+          searchName,
+          sortBy,
+          order,
+          exitTimeStatus,
+          floor,
+          room,
+        });
+
+        try {
+            
+            let url = `http://localhost:5000/api/user/getSortedUsers?${queryParams.toString()}`;
+            let response=await fetch(url);
+            if (!response.ok) {
+            throw new Error(`API request failed: ${response.status}`);
+          }
+
+          let users = await response.json();
+          console.log("Users fetched:", users);
+
+          let list = document.getElementById("user-list");
+          list.innerHTML = ""; // Clear previous data
+
+          if (users.length === 0) {
+            let li = document.createElement("li");
+            li.textContent = "No users found.";
+            list.appendChild(li);
+            return;
+          }
+
+          users.forEach((user) => {
+            let li = document.createElement("li");
+            li.textContent = `Name: ${user.fullName}, Floor: ${
+              user.floor
+            }, Room: ${user.room}, Entry Time: ${user.entryTime}, Exit Time: ${
+              user.exitTime || "Pending"
+            }`;
+            list.appendChild(li);
+          });
+        } catch (error) {
+          console.error("Error fetching sorted users:", error.message);
+        }
+      }
+      function updateRoomOptions() {
+        let floor = document.getElementById("floorFilter").value;
+        let roomFilter = document.getElementById("roomFilter");
+        roomFilter.innerHTML = "<option value=''>All Rooms</option>";
+        if (floor === "1") {
+          roomFilter.innerHTML +=
+            "<option value='101'>Room 101</option><option value='102'>Room 102</option>";
+        } else if (floor === "2") {
+          roomFilter.innerHTML +=
+            "<option value='201'>Room 201</option><option value='202'>Room 202</option>";
+        } else if (floor === "3") {
+          roomFilter.innerHTML +=
+            "<option value='301'>Room 301</option><option value='302'>Room 302</option>";
+        }
+      }
+      
+
+      async function fetchSortedPatients() {
+    let searchName = document.getElementById("patientSearchName").value.trim();
+    let room = document.getElementById("patientRoom").value.trim();
+    let condition = document.getElementById("patientCondition").value;
+    let gender = document.getElementById("patientGender").value;
+    let minAge = document.getElementById("patientMinAge").value;
+    let maxAge = document.getElementById("patientMaxAge").value;
+    let sortBy = document.getElementById("patientSortBy").value;
+    let order = document.getElementById("patientSortOrder").value;
+
+    let queryParams = new URLSearchParams({
+        searchName,
+        room,
+        condition,
+        gender,
+        minAge,
+        maxAge,
+        sortBy,
+        order,
+    });
+
+    try {
+        let url = `http://localhost:5000/api/patient/getSortedPatients?${queryParams.toString()}`;
+        let response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`API request failed: ${response.status}`);
+        }
+
+        let patients = await response.json();
+        console.log("Patients fetched:", patients);
+
+        let list = document.getElementById("patient-list");
+        list.innerHTML = ""; // Clear previous data
+
+        if (patients.length === 0) {
+            let li = document.createElement("li");
+            li.textContent = "No patients found.";
+            list.appendChild(li);
+            return;
+        }
+
+        patients.forEach((patient) => {
+            let li = document.createElement("li");
+            li.textContent = `Name: ${patient.name}, Age: ${patient.age}, Gender: ${patient.gender}, Condition: ${patient.condition}, Room: ${patient.room}`;
+            list.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Error fetching sorted patients:", error.message);
+    }
+}
+      //Styling
+      function fetchPatients() {
+        // Hide all other sections
+        document
+          .querySelectorAll(".patient-fetch, .patient-add, .patient-sort")
+          .forEach((el) => {
+            el.style.display = "block";
+          });
+
+        document
+          .querySelectorAll(".admin, .user-list, .sort-users")
+          .forEach((el) => {
+            el.style.display = "none";
+          });
+      }
+
+      function fetchUsers() {
+        document.querySelectorAll(".user-fetch, .user-data").forEach((el) => {
+          el.style.display = "block";
+        });
+
+        document
+          .querySelectorAll(
+            ".admin, .patient-fetch, .patient-add, .patient-sort"
+          )
+          .forEach((el) => {
+            el.style.display = "none";
+          });
+      }
+    </script>
+  </body>
+</html>

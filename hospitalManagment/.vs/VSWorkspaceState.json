@@ -1,14 +1,5 @@
 {
-  "ExpandedNodes": [
-    "",
-    "\\hospitalManagment",
-    "\\hospitalManagment\\bin",
-    "\\hospitalManagment\\Controllers",
-    "\\hospitalManagment\\Models",
-    "\\hospitalManagment\\obj",
-    "\\hospitalManagment\\Properties",
-    "\\hospitalManagment\\Services"
-  ],
-  "SelectedNode": "\\hospitalManagment\\Services\\MongoDbService.cs",
+  "ExpandedNodes": [],
+  "SelectedNode": "\\hospitalManagment.sln",
   "PreviewInSolutionExplorer": false
 }
