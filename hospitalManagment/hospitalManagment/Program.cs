@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+
 // Load appsettings.json
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 builder.Configuration.AddJsonFile("appsettings.Development.json", optional: true, reloadOnChange: true);
@@ -42,6 +45,12 @@ builder.Services.AddControllers();
 
 
 var app = builder.Build();
+
+// Use PORT from environment (important for Render or any cloud)
+
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+Console.WriteLine($"Running on port: {port}");
+app.Urls.Add($"http://*:{port}");
 
 app.UseCors("AllowAllOrigins");
 app.UseRouting();

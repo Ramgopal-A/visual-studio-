@@ -539,13 +539,13 @@
     </div>
     <script>
       async function fetchUsers() {
-        let response = await fetch("http://localhost:5000/api/user/get");
+        let response = await fetch("https://hospital-ut66.onrender.com/api/user/get");
         let users = await response.json();
         console.log("Users Data:", users);
       }
 
       async function fetchPatients() {
-        let response = await fetch("http://localhost:5000/api/patient/get", {
+        let response = await fetch("https://hospital-ut66.onrender.com/api/patient/get", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });
@@ -570,7 +570,7 @@
           Room: document.getElementById("patient-room").value,
         };
 
-        let response = await fetch("http://localhost:5000/api/patient/add", {
+        let response = await fetch("https://hospital-ut66.onrender.com/api/patient/add", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
@@ -599,7 +599,7 @@
 
         try {
             
-            let url = `http://localhost:5000/api/user/getSortedUsers?${queryParams.toString()}`;
+            let url = `https://hospital-ut66.onrender.com/api/user/getSortedUsers?${queryParams.toString()}`;
             let response=await fetch(url);
             if (!response.ok) {
             throw new Error(`API request failed: ${response.status}`);
@@ -670,7 +670,7 @@
     });
 
     try {
-        let url = `http://localhost:5000/api/patient/getSortedPatients?${queryParams.toString()}`;
+        let url = `https://hospital-ut66.onrender.com/api/patient/getSortedPatients?${queryParams.toString()}`;
         let response = await fetch(url);
 
         if (!response.ok) {
